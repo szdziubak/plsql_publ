@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Temat 1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="temat-1-wprowadzenie-do-plsql-podstawowe-rodzaje-podprogram%C3%B3w-zasady-budowy-bloku-plsql-deklarowanie-zmiennych-i-sta%C5%82ych">Temat 1: Wprowadzenie do PL/SQL. Podstawowe rodzaje podprogramów. Zasady budowy bloku PL/SQL. Deklarowanie zmiennych i stałych.</h2>
+<h3 id="wprowadzenie-do-plsql">Wprowadzenie do PL/SQL</h3>
+<p>PL/SQL (Procedural Language/Structured Query Language) to język programowania stanowiący proceduralne rozszerzenie standardowego języka SQL, stworzone i rozwijane przez firmę Oracle. Jest on ściśle zintegrowany z serwerem bazy danych Oracle, co pozwala na efektywne przetwarzanie danych.</p>
+<p>Główną zaletą PL/SQL jest połączenie prostoty i elastyczności zapytań SQL z mocą języków proceduralnych. Umożliwia to stosowanie konstrukcji programistycznych takich jak zmienne, stałe, pętle, instrukcje warunkowe oraz zaawansowaną obsługę błędów, co znacząco rozszerza możliwości samego SQL.</p>
+<h3 id="budowa-bloku-plsql">Budowa bloku PL/SQL</h3>
+<p>Podstawową jednostką kodu w PL/SQL jest blok. Każdy program w tym języku składa się z co najmniej jednego bloku, który może być zagnieżdżony wewnątrz innego.</p>
+<p>Struktura bloku PL/SQL składa się z trzech głównych sekcji:</p>
+<ul>
+<li><strong>Sekcja deklaracji (<code>DECLARE</code>)</strong> - Jest to sekcja opcjonalna, w której deklaruje się wszystkie zmienne, stałe, kursory, wyjątki oraz typy danych, które będą używane wewnątrz bloku. Rozpoczyna się słowem kluczowym <code>DECLARE</code><a href="skrypt.txt">^1</a>.</li>
+<li><strong>Sekcja wykonawcza (<code>BEGIN</code>)</strong> - To jedyna obowiązkowa część bloku. Zawiera instrukcje SQL oraz PL/SQL, które realizują logikę programu. Musi zawierać co najmniej jedną instrukcję, nawet jeśli jest to instrukcja pusta (<code>NULL;</code>)<a href="skrypt.txt">^1</a>. Rozpoczyna się słowem kluczowym <code>BEGIN</code>.</li>
+<li><strong>Sekcja obsługi wyjątków (<code>EXCEPTION</code>)</strong> - Sekcja opcjonalna, która służy do zarządzania błędami i wyjątkami mogącymi wystąpić podczas działania programu. Rozpoczyna się słowem kluczowym <code>EXCEPTION</code><a href="skrypt.txt">^1</a>.</li>
+</ul>
+<p>Każdy blok musi być zakończony słowem kluczowym <code>END;</code><a href="skrypt.txt">^1</a>.</p>
+<p><strong>Podstawowa składnia bloku:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DECLARE</span> <span class="hljs-comment">-- Sekcja opcjonalna</span>
+  <span class="hljs-comment">-- Deklaracje zmiennych, stałych, kursorów, etc.</span>
+<span class="hljs-keyword">BEGIN</span> <span class="hljs-comment">-- Sekcja obowiązkowa</span>
+  <span class="hljs-comment">-- Instrukcje do wykonania</span>
+<span class="hljs-keyword">EXCEPTION</span> <span class="hljs-comment">-- Sekcja opcjonalna</span>
+  <span class="hljs-comment">-- Obsługa błędów</span>
+<span class="hljs-keyword">END</span>; <span class="hljs-comment">-- Obowiązkowe zakończenie bloku</span>
+/ <span class="hljs-comment">-- Znak informujący kompilator o końcu bloku</span>
+</div></code></pre>
+<h3 id="podstawowe-rodzaje-podprogram%C3%B3w">Podstawowe rodzaje podprogramów</h3>
+<p>W PL/SQL wyróżniamy dwa główne typy bloków:</p>
+<ul>
+<li><strong>Bloki anonimowe</strong> – Są to nienazwane bloki kodu, które nie są przechowywane w bazie danych jako obiekty. Kompiluje się je i wykonuje jednorazowo w momencie uruchomienia. Idealnie nadają się do tworzenia jednorazowych skryptów<a href="skrypt.txt">^1</a>.</li>
+<li><strong>Bloki nazwane (podprogramy)</strong> – Są to procedury i funkcje, które mają swoje nazwy, są kompilowane i przechowywane w bazie danych jako obiekty. Dzięki temu można je wielokrotnie wywoływać z różnych miejsc w aplikacji<a href="skrypt.txt">^1</a>.
+<ul>
+<li><strong>Procedury</strong> – Służą do wykonywania określonych akcji lub kroków biznesowych. Nie muszą zwracać wartości, choć mogą to robić za pomocą parametrów wyjściowych<a href="skrypt.txt">^1</a>.</li>
+<li><strong>Funkcje</strong> – Ich głównym zadaniem jest wykonanie obliczeń i zwrócenie pojedynczej wartości za pomocą słowa kluczowego <code>RETURN</code><a href="skrypt.txt">^1</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="deklarowanie-zmiennych-i-sta%C5%82ych">Deklarowanie zmiennych i stałych</h3>
+<p>Zmienne i stałe muszą być zadeklarowane w sekcji <code>DECLARE</code> bloku PL/SQL przed ich użyciem<a href="skrypt.txt">^1</a>.</p>
+<p><strong>Deklaracja zmiennych</strong>
+Zmienne służą do tymczasowego przechowywania danych, które mogą być modyfikowane w trakcie działania programu.</p>
+<p><strong>Składnia:</strong></p>
+<pre class="hljs"><code><div>nazwa_zmiennej [CONSTANT] typ_danych [NOT NULL] [:= | DEFAULT wartość_początkowa];
+</div></code></pre>
+<p><strong>Przykład deklaracji i użycia zmiennej:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SET</span> SERVEROUTPUT <span class="hljs-keyword">ON</span>;
+
+<span class="hljs-keyword">DECLARE</span>
+    v_tekst <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">'Witaj'</span>; <span class="hljs-comment">-- Inicjalizacja z ograniczeniem NOT NULL</span>
+<span class="hljs-keyword">BEGIN</span>
+    v_tekst := <span class="hljs-string">'Kurs '</span> || <span class="hljs-string">'PL/SQL'</span>; <span class="hljs-comment">-- Modyfikacja wartości zmiennej</span>
+    DBMS_OUTPUT.PUT_LINE(v_tekst || ' od zera');
+<span class="hljs-keyword">END</span>;
+/
+</div></code></pre>
+<p><strong>Deklaracja stałych</strong>
+Stała to zmienna, której wartość jest przypisywana w momencie deklaracji i nie może być później zmieniona. Użycie słowa kluczowego <code>CONSTANT</code> wymaga natychmiastowej inicjalizacji<a href="skrypt.txt">^1</a>.</p>
+<p><strong>Składnia:</strong></p>
+<pre class="hljs"><code><div>nazwa_stałej CONSTANT typ_danych := wartość;
+</div></code></pre>
+<p><strong>Przykład deklaracji stałej:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DECLARE</span>
+  c_podatek <span class="hljs-keyword">CONSTANT</span> <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>) := <span class="hljs-number">0.23</span>;
+  v_cena_netto NUMBER(10,2) := 100;
+  v_cena_brutto NUMBER(10,2);
+<span class="hljs-keyword">BEGIN</span>
+  v_cena_brutto := v_cena_netto * (<span class="hljs-number">1</span> + c_podatek);
+  DBMS_OUTPUT.PUT_LINE('Cena brutto: ' || v_cena_brutto);
+<span class="hljs-keyword">END</span>;
+/
+</div></code></pre>
+<h3 id="atrybut-type">Atrybut %TYPE</h3>
+<p>Atrybut <code>%TYPE</code> pozwala na zadeklarowanie zmiennej, której typ danych jest zakotwiczony (powiązany) z typem kolumny w tabeli lub z typem innej, wcześniej zadeklarowanej zmiennej.</p>
+<p><strong>Zalety użycia <code>%TYPE</code>:</strong></p>
+<ul>
+<li><strong>Elastyczność i łatwość utrzymania kodu</strong>: Jeśli typ danych kolumny w bazie danych ulegnie zmianie (np. <code>NUMBER(6)</code> na <code>NUMBER(8)</code>), kod PL/SQL automatycznie się dostosuje przy następnej kompilacji, bez potrzeby ręcznej modyfikacji.</li>
+<li><strong>Ochrona przed błędami</strong>: Zapewnia, że zmienna zawsze będzie miała odpowiedni rozmiar i typ, aby pomieścić dane z kolumny, co zapobiega błędom przepełnienia lub niezgodności typów.</li>
+</ul>
+<p><strong>Składnia:</strong></p>
+<pre class="hljs"><code><div>nazwa_zmiennej nazwa_tabeli.nazwa_kolumny%TYPE;
+nazwa_zmiennej2 nazwa_zmiennej1%TYPE;
+</div></code></pre>
+<p><strong>Przykład użycia <code>%TYPE</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DECLARE</span>
+  <span class="hljs-comment">-- Typ zmiennej v_nazwisko jest powiązany z typem kolumny LAST_NAME w tabeli EMPLOYEES</span>
+  v_nazwisko   employees.last_name%<span class="hljs-keyword">TYPE</span>;
+  v_pensja     employees.salary%TYPE;
+  <span class="hljs-comment">-- Typ zmiennej v_pensja_kopia jest powiązany z typem zadeklarowanej wcześniej zmiennej v_pensja</span>
+  v_pensja_kopia v_pensja%TYPE;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> last_name, salary 
+  <span class="hljs-keyword">INTO</span> v_nazwisko, v_pensja
+  <span class="hljs-keyword">FROM</span> employees 
+  <span class="hljs-keyword">WHERE</span> employee_id = <span class="hljs-number">100</span>;
+  
+  v_pensja_kopia := v_pensja;
+  
+  DBMS_OUTPUT.PUT_LINE('Pracownik: ' || v_nazwisko);
+  DBMS_OUTPUT.PUT_LINE('Pensja: ' || v_pensja_kopia);
+<span class="hljs-keyword">END</span>;
+/
+</div></code></pre>
+<h3 id="zasi%C4%99g-i-widoczno%C5%9B%C4%87-zmiennych-variable-scope">Zasięg i widoczność zmiennych (Variable Scope)</h3>
+<p>Zasięg zmiennej (lub innej zadeklarowanej encji, jak stała czy kursor) określa, w której części kodu można się do niej odwoływać. Zmienne są widoczne tylko w bloku, w którym zostały zadeklarowane, oraz we wszystkich blokach w nim zagnieżdżonych.</p>
+<ul>
+<li>Zmienne zadeklarowane w <strong>bloku zewnętrznym</strong> są widoczne w bloku zewnętrznym i wszystkich jego blokach wewnętrznych.</li>
+<li>Zmienne zadeklarowane w <strong>bloku wewnętrznym</strong> są widoczne tylko w tym bloku wewnętrznym i nie są dostępne dla bloku zewnętrznego.</li>
+<li>Jeśli w bloku wewnętrznym zadeklarujemy zmienną o takiej samej nazwie jak w bloku zewnętrznym, to wewnątrz tego bloku wewnętrznego odwołanie do tej nazwy będzie dotyczyć zmiennej lokalnej (przesłoni ona zmienną zewnętrzną).</li>
+</ul>
+<p><strong>Przykład widoczności zmiennych:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DECLARE</span>
+    v_zewnetrzna <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">50</span>) := <span class="hljs-string">'Jestem w bloku zewnętrznym'</span>;
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span>
+        v_wewnetrzna <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">50</span>) := <span class="hljs-string">'Jestem w bloku wewnętrznym'</span>;
+    <span class="hljs-keyword">BEGIN</span>
+        DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">'Wewnątrz: '</span> || v_zewnetrzna); <span class="hljs-comment">-- Dostęp do zmiennej zewnętrznej</span>
+        DBMS_OUTPUT.PUT_LINE('Wewnątrz: ' || v_wewnetrzna); <span class="hljs-comment">-- Dostęp do zmiennej wewnętrznej</span>
+    <span class="hljs-keyword">END</span>;
+    
+    DBMS_OUTPUT.PUT_LINE('Na zewnątrz: ' || v_zewnetrzna);
+    <span class="hljs-comment">-- Poniższa linia spowoduje błąd kompilacji, ponieważ v_wewnetrzna nie jest widoczna w bloku zewnętrznym.</span>
+    <span class="hljs-comment">-- DBMS_OUTPUT.PUT_LINE(v_wewnetrzna); </span>
+<span class="hljs-keyword">END</span>;
+/
+</div></code></pre>
+<p><strong>Przykład przesłaniania zmiennych (shadowing):</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DECLARE</span>
+    v_tekst <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">50</span>) := <span class="hljs-string">'Zmienna z bloku zewnętrznego'</span>;
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span>
+        v_tekst <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">50</span>) := <span class="hljs-string">'Zmienna z bloku wewnętrznego'</span>;
+    <span class="hljs-keyword">BEGIN</span>
+        <span class="hljs-comment">-- Ta linia wypisze wartość zmiennej zadeklarowanej lokalnie (wewnętrznej)</span>
+        DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">'Wewnątrz: '</span> || v_tekst); 
+    <span class="hljs-keyword">END</span>;
+    <span class="hljs-comment">-- Ta linia wypisze wartość zmiennej zadeklarowanej w bloku zewnętrznym</span>
+    DBMS_OUTPUT.PUT_LINE('Na zewnątrz: ' || v_tekst); 
+<span class="hljs-keyword">END</span>;
+/
+</div></code></pre>
+<h3 id="zmienne-bindowane-bind-variables">Zmienne bindowane (Bind Variables)</h3>
+<p>Zmienne bindowane (lub zmienne hosta) są tworzone w środowisku klienta (np. w SQL*Plus lub SQL Developer), a nie w sekcji <code>DECLARE</code> bloku PL/SQL. Istnieją one w ramach całej sesji i mogą być współdzielone między różnymi blokami PL/SQL i zapytaniami SQL.</p>
+<p><strong>Kluczowe cechy:</strong></p>
+<ul>
+<li>Są deklarowane w kliencie SQL za pomocą komendy <code>VARIABLE</code> (lub <code>VAR</code>).</li>
+<li>W kodzie PL/SQL odwołujemy się do nich, poprzedzając ich nazwę dwukropkiem (<code>:</code>).</li>
+<li>Są przydatne do przekazywania wartości do skryptów bez modyfikacji samego kodu.</li>
+</ul>
+<p><strong>Przykład użycia zmiennej bindowanej:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">/*trzeba wykonać cały skrypt na raz lub pojedynczo*/</span>
+<span class="hljs-comment">-- Krok 1: Deklaracja zmiennej bindowanej w środowisku klienta (np. SQL Developer)</span>
+VARIABLE b_employee_id NUMBER;
+
+<span class="hljs-comment">-- Krok 2: Użycie zmiennej bindowanej w bloku PL/SQL do przypisania jej wartości</span>
+<span class="hljs-keyword">BEGIN</span>
+  :b_employee_id := <span class="hljs-number">101</span>; <span class="hljs-comment">-- Przypisanie wartości do zmiennej bindowanej</span>
+<span class="hljs-keyword">END</span>;
+/
+
+<span class="hljs-comment">-- Krok 3: Użycie tej samej zmiennej w innym zapytaniu SQL w tej samej sesji</span>
+<span class="hljs-keyword">SET</span> SERVEROUTPUT <span class="hljs-keyword">ON</span>;
+<span class="hljs-keyword">DECLARE</span>
+    v_last_name employees.last_name%<span class="hljs-keyword">TYPE</span>;
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-comment">-- Odczyt wartości ze zmiennej bindowanej i użycie jej w zapytaniu</span>
+    <span class="hljs-keyword">SELECT</span> last_name
+    <span class="hljs-keyword">INTO</span> v_last_name
+    <span class="hljs-keyword">FROM</span> employees
+    <span class="hljs-keyword">WHERE</span> employee_id = :b_employee_id;
+    
+    DBMS_OUTPUT.PUT_LINE('Nazwisko pracownika o ID ' || :b_employee_id || ' to ' || v_last_name);
+<span class="hljs-keyword">END</span>;
+/
+
+<span class="hljs-comment">-- Można ją również wyświetlić bezpośrednio w kliencie</span>
+PRINT b_employee_id;
+</div></code></pre>
+
+</body>
+</html>
