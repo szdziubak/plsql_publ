@@ -1,4 +1,4 @@
-### Zadania do Tematu 5: Obsługa wyjątków
+### Zadania do Tematu 4: Obsługa wyjątków
 
 **Zadanie 1: Obsługa wyjątku wbudowanego (`NO_DATA_FOUND`, `TOO_MANY_ROWS`)**
 
